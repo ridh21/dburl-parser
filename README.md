@@ -6,7 +6,7 @@ A modern web application that parses database connection URLs and converts them 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss)
 
-## ✨ Features
+## ✨ Features 
 
 - **Instant URL Parsing** - Parse database URLs in milliseconds
 - **Auto-Detection** - Automatically detects database type from URL protocol
