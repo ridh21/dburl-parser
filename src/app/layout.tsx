@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -22,6 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="e74504b6-4f88-4ba1-8c5c-16265cc3df32"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${dmSans.variable} font-sans antialiased min-h-screen bg-background`}
       >
