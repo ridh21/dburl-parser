@@ -34,17 +34,34 @@ export function ResultsDisplay({ parsed }: ResultsDisplayProps) {
         }
     };
 
-    const exportAsJson = async () => {
+    const exportAsJson = () => {
         const exportData = {
             original_url: parsed.jdbcUrl,
             database_type: parsed.dbType,
+            parsed_connection: {
+                host: parsed.host,
+                port: parsed.port,
+                database: parsed.database,
+                username: parsed.username,
+                password: parsed.password,
+                sslmode: parsed.sslmode,
+            },
             dbeaver: dbeaverConfig,
             pgadmin: generatePgAdminImportJson(pgAdminConfig),
         };
 
         try {
-            await navigator.clipboard.writeText(JSON.stringify(exportData, null, 2));
-            toast.success("Configuration exported as JSON");
+            const jsonString = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `db-config-${parsed.database || 'export'}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            toast.success("Configuration exported as JSON file");
         } catch {
             toast.error("Failed to export configuration");
         }
