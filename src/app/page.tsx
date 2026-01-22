@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { UrlInput } from "@/components/url-input";
 import { ResultsDisplay } from "@/components/results-display";
-import { VisitorCounter } from "@/components/visitor-counter";
 import { ParsedDatabaseUrl } from "@/lib/db-parser";
 import Link from "next/link";
 
@@ -163,9 +162,8 @@ export default function Home() {
       <footer className="border-t border-border/50 mt-auto">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>Built by <Link href="https://github.com/ridh21" target="_blank" className="hover:text-foreground transition-colors">Ridham Patel</Link></p>
+            <p>Built by <Link href="https://github.com/ridh21" target="_blank">Ridham Patel</Link></p>
             <div className="flex items-center gap-4">
-              <VisitorCounter />
               <span>Supports PostgreSQL, MySQL, MariaDB</span>
             </div>
           </div>
