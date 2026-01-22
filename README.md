@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dburl-parser
 
-## Getting Started
+A modern web application that parses database connection URLs and converts them into ready-to-use connection parameters for popular database management tools like **DBeaver** and **pgAdmin**.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss)
+
+## ✨ Features
+
+- **Instant URL Parsing** - Parse database URLs in milliseconds
+- **Auto-Detection** - Automatically detects database type from URL protocol
+- **Multi-Database Support** - PostgreSQL, MySQL, and MariaDB
+- **Tool-Specific Output** - Ready-to-use configs for DBeaver and pgAdmin
+- **One-Click Copy** - Copy individual fields or entire configuration
+- **Password Security** - Toggle password visibility with masking
+- **Export as JSON** - Download all configurations as JSON
+- **100% Private** - All processing happens locally in your browser
+
+## 🚀 Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Start development server
 pnpm dev
-# or
-bun dev
+
+# Build for production
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Paste a database connection URL:
 
-## Learn More
+```
+postgresql://user:password@localhost:5432/mydb?sslmode=require
+mysql://admin:secret@db.example.com:3306/production
+```
 
-To learn more about Next.js, take a look at the following resources:
+The app will parse the URL and display:
+- **DBeaver** configuration with JDBC URL
+- **pgAdmin** server registration parameters
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🗂️ Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── layout.tsx       # Root layout with fonts
+│   ├── page.tsx         # Main application page
+│   └── globals.css      # Theme and styling
+├── components/
+│   ├── url-input.tsx    # URL input with validation
+│   ├── results-display.tsx  # Tabbed output display
+│   └── parameter-field.tsx  # Reusable field component
+└── lib/
+    ├── db-parser.ts     # Core URL parsing logic
+    ├── dbeaver-mapper.ts    # DBeaver config generator
+    └── pgadmin-mapper.ts    # pgAdmin config generator
+```
 
-## Deploy on Vercel
+## 🔧 Supported Databases
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Protocol | Database |
+|----------|----------|
+| `postgresql://` | PostgreSQL |
+| `postgres://` | PostgreSQL |
+| `mysql://` | MySQL |
+| `mariadb://` | MariaDB |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
+
+## 📄 License
+
+MIT License
+
+## 👤 Author
+
+Built by [Ridham Patel](https://github.com/ridh21)
